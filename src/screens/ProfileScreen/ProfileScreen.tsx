@@ -1,14 +1,14 @@
-import React, {useCallback, useState} from "react";
-import {Button, Text, View} from "react-native";
-import Toast from 'react-native-root-toast';
-import {RouteName, RouteStackParamList} from "../../StackNavigation/route.constants";
+import React, {useState} from "react";
+import {View} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {useNavigation} from "@react-navigation/native";
 import showToast from "../../utils/showToast";
+import HistoryStackNavigation from "../../Navigation/HistoryStackNavigation/HistoryStackNavigation";
+import {HistoryRouteParamList} from "../../Navigation/HistoryStackNavigation/HistoryRoute.constants";
 
 const ProfileScreen = () => {
     const [loading, setLoading] = useState<boolean>(false);
-    const navigation = useNavigation<StackNavigationProp<RouteStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<HistoryRouteParamList>>();
 
     const goBack = async (): Promise<void> => {
         try {
@@ -29,11 +29,8 @@ const ProfileScreen = () => {
     };
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Details Screen</Text>
-            <Button
-                title="Go to Details"
-                onPress={goBack}
-            />
+            <HistoryStackNavigation/>
+
         </View>
     );
 }

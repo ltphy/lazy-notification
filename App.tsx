@@ -7,7 +7,7 @@
  *
  * @format
  */
-import { RootSiblingParent } from 'react-native-root-siblings';
+import {RootSiblingParent} from 'react-native-root-siblings';
 
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect} from 'react';
@@ -20,17 +20,17 @@ import {
     useColorScheme,
     View,
 } from 'react-native';
-import MainStackNavigation from "./src/StackNavigation/StackNavigation";
 import {requestCameraPermission} from "./src/utils";
+import BottomNavigationTabs from "./src/Navigation/BottomNavigationTab";
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
-    useEffect(()=>{
+    useEffect(() => {
         requestCameraPermission();
-    },[]);
+    }, []);
     return (
         <RootSiblingParent>
-            <MainStackNavigation/>
+            <BottomNavigationTabs/>
         </RootSiblingParent>
 
     );
