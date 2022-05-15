@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {Button, Text, View} from "react-native";
 import Toast from 'react-native-root-toast';
 import {RouteName, RouteStackParamList} from "../../StackNavigation/route.constants";
@@ -14,7 +14,7 @@ const ProfileScreen = () => {
         try {
             setLoading(true);
             await new Promise((resolve, reject) => {
-                setTimeout(()=>{
+                setTimeout(() => {
                     resolve('success');
                 }, 2000);
             });
@@ -22,7 +22,8 @@ const ProfileScreen = () => {
             setLoading(false);
             showToast.success('Success');
             // showToast.success('Failed');
-            navigation.goBack();
+            // navigation.goBack();
+            navigation.pop();
         }
 
     };
@@ -37,3 +38,4 @@ const ProfileScreen = () => {
     );
 }
 export default ProfileScreen;
+
