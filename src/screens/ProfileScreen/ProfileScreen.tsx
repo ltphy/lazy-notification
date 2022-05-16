@@ -1,14 +1,14 @@
 import React, {useState} from "react";
-import {View} from "react-native";
+import {Button, Text, View} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {useNavigation} from "@react-navigation/native";
 import showToast from "../../utils/showToast";
 import HistoryStackNavigation from "../../Navigation/HistoryStackNavigation/HistoryStackNavigation";
-import {HistoryRouteParamList} from "../../Navigation/HistoryStackNavigation/HistoryRoute.constants";
+import {MainRouteName, MainRouteParamList} from "../../Navigation/MainRoute.constants";
 
 const ProfileScreen = () => {
     const [loading, setLoading] = useState<boolean>(false);
-    const navigation = useNavigation<StackNavigationProp<HistoryRouteParamList>>();
+    const navigation = useNavigation<StackNavigationProp<MainRouteParamList>>();
 
     const goBack = async (): Promise<void> => {
         try {
@@ -27,10 +27,15 @@ const ProfileScreen = () => {
         }
 
     };
+
+    const goToChallengeScreen = () => {
+        navigation.navigate({key: MainRouteName.RewardScreen, name: MainRouteName.RewardScreen});
+    };
+
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <HistoryStackNavigation/>
-
+            <Button title={"Go TO Challenge Screen"} onPress={goToChallengeScreen}/>
+            <Text>Profile Screen</Text>
         </View>
     );
 }

@@ -1,15 +1,23 @@
 enum MainRouteName {
     HomeScreen = "HomeScreen",
     NotificationScreen = "NotificationScreen",
+    ActivityScreen = "ActivityScreen",
+    SummaryContent = "SummaryContentScreen",
+    ChallengeScreen = "ChallengeScreen",
+    RewardScreen = "RewardScreen",
+    SubscriptionScreen = "SubscriptionScreen",
     ProfileScreen = "ProfileScreen",
-    ActivityScreen = "ActivityScreen"
 }
 
 export type MainRouteParamList = {
     HomeScreen: undefined,
     NotificationScreen: undefined;
-    ProfileScreen: undefined;
     ActivityScreen: undefined;
+    SummaryContentScreen: undefined;
+    ChallengeScreen: undefined,
+    RewardScreen: undefined;
+    SubscriptionScreen: undefined;
+    ProfileScreen: undefined;
 }
 
 

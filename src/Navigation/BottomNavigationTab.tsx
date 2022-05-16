@@ -1,26 +1,28 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import ActivityScreen from "../screens/ActivityScreen/ActivityScreen";
-import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 import PaymentScreen from "../screens/PaymentScreen/PaymentScreen";
 import React from "react";
 import {NavigationContainer} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import bottomNavigationTabsStyles from "./BottomNavigationTab.styles";
+import {Text} from 'react-native';
+import HistoryStackNavigation from "./HistoryStackNavigation/HistoryStackNavigation";
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigationTabs = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator screenOptions={{
+            <Tab.Navigator screenOptions={({route}) => ({
                 tabBarActiveTintColor: '#ed7907',
-                tabBarStyle:bottomNavigationTabsStyles.tabBar,
+                tabBarStyle: bottomNavigationTabsStyles.tabBar,
                 tabBarLabelStyle: bottomNavigationTabsStyles.tabBarLabel,
-
-            }}>
+                tabBarLabel: ({position, focused}) =>
+                    focused ? (<Text style={{fontWeight: 'bold'}}>{route.name}</Text>) :
+                        (<Text style={{fontWeight: 'normal', fontSize: 10}}>{route.name}</Text>),
+            })}>
                 <Tab.Screen name="Home" component={HomeScreen} options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size}/>),
@@ -37,8 +39,9 @@ const BottomNavigationTabs = () => {
                     tabBarLabel: 'Payment',
                     tabBarIcon: ({color, size}) => (<MaterialIcons name="payment" color={color} size={size}/>),
                 }}/>
-                <Tab.Screen name="ProfileScreen" component={ProfileScreen} options={{
+                <Tab.Screen name="ProfileScreen" component={HistoryStackNavigation} options={{
                     tabBarLabel: 'Profile',
+                    headerShown: false,
                     tabBarIcon: ({color, size}) => (
                         <MaterialCommunityIcons name="account-circle-outline" color={color} size={size}/>),
                 }}/>

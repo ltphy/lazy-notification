@@ -1,26 +1,24 @@
 import React from "react";
-import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from "../../screens/HomeScreen/HomeScreen";
-import {MainRouteName} from "../MainRoute.constants";
-import PaymentScreen from "../../screens/PaymentScreen/PaymentScreen";
 import ProfileScreen from "../../screens/ProfileScreen/ProfileScreen";
-import {HistoryRoute} from "./HistoryRoute.constants";
 import ChallengeScreen from "../../screens/ProfileScreen/screens/ChallengeScreen/ChallengeScreen";
 import RewardScreen from "../../screens/ProfileScreen/screens/RewardScreen/RewardScreen";
 import SubscriptionScreen from "../../screens/ProfileScreen/screens/SupscriptionScreen/SupscriptionScreen";
+import {MainRouteName, MainRouteParamList} from "../MainRoute.constants";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<MainRouteParamList>();
 
 const HistoryStackNavigation = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name={HistoryRoute.ChallengeScreen} component={ChallengeScreen}
-                          key={HistoryRoute.ChallengeScreen}/>
-            <Stack.Screen name={HistoryRoute.RewardScreen} component={RewardScreen}
-                          key={HistoryRoute.RewardScreen}/>
-            <Stack.Screen name={HistoryRoute.SubscriptionScreen} component={SubscriptionScreen}
-                          key={HistoryRoute.SubscriptionScreen}/>
+            <Stack.Screen name={MainRouteName.ProfileScreen} component={ProfileScreen}
+                          key={MainRouteName.ProfileScreen}/>
+            <Stack.Screen name={MainRouteName.ChallengeScreen} component={ChallengeScreen}
+                          key={MainRouteName.ChallengeScreen}/>
+            <Stack.Screen name={MainRouteName.RewardScreen} component={RewardScreen}
+                          key={MainRouteName.RewardScreen}/>
+            <Stack.Screen name={MainRouteName.SubscriptionScreen} component={SubscriptionScreen}
+                          key={MainRouteName.SubscriptionScreen}/>
         </Stack.Navigator>
     );
 };
