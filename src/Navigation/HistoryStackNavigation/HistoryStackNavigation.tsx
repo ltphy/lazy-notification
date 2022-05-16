@@ -5,12 +5,15 @@ import ChallengeScreen from "../../screens/ProfileScreen/screens/ChallengeScreen
 import RewardScreen from "../../screens/ProfileScreen/screens/RewardScreen/RewardScreen";
 import SubscriptionScreen from "../../screens/ProfileScreen/screens/SupscriptionScreen/SupscriptionScreen";
 import {MainRouteName, MainRouteParamList} from "../MainRoute.constants";
+import BottomNavigationTabs from "../BottomNavigationTab";
 
 const Stack = createNativeStackNavigator<MainRouteParamList>();
 
 const HistoryStackNavigation = () => {
     return (
         <Stack.Navigator>
+            <Stack.Screen name={MainRouteName.HomeScreen} component={BottomNavigationTabs}
+                          key={MainRouteName.HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name={MainRouteName.ProfileScreen} component={ProfileScreen}
                           key={MainRouteName.ProfileScreen}/>
             <Stack.Screen name={MainRouteName.ChallengeScreen} component={ChallengeScreen}

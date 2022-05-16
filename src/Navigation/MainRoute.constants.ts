@@ -7,9 +7,11 @@ enum MainRouteName {
     RewardScreen = "RewardScreen",
     SubscriptionScreen = "SubscriptionScreen",
     ProfileScreen = "ProfileScreen",
+    PaymentScreen = "PaymentScreen"
 }
 
 export type MainRouteParamList = {
+    PaymentScreen: undefined,
     HomeScreen: undefined,
     NotificationScreen: undefined;
     ActivityScreen: undefined;

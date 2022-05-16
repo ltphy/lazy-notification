@@ -22,6 +22,7 @@ import {
 } from 'react-native';
 import {requestCameraPermission} from "./src/utils";
 import BottomNavigationTabs from "./src/Navigation/BottomNavigationTab";
+import HistoryStackNavigation from './src/Navigation/HistoryStackNavigation/HistoryStackNavigation';
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
@@ -30,7 +31,9 @@ const App = () => {
     }, []);
     return (
         <RootSiblingParent>
-            <BottomNavigationTabs/>
+            <NavigationContainer>
+                <HistoryStackNavigation/>
+            </NavigationContainer>
         </RootSiblingParent>
 
     );

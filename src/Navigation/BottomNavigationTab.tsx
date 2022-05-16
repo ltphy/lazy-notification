@@ -9,44 +9,44 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import bottomNavigationTabsStyles from "./BottomNavigationTab.styles";
 import {Text} from 'react-native';
 import HistoryStackNavigation from "./HistoryStackNavigation/HistoryStackNavigation";
+import {MainRouteName} from "./MainRoute.constants";
+import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigationTabs = () => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator screenOptions={({route}) => ({
-                tabBarActiveTintColor: '#ed7907',
-                tabBarStyle: bottomNavigationTabsStyles.tabBar,
-                tabBarLabelStyle: bottomNavigationTabsStyles.tabBarLabel,
-                tabBarLabel: ({position, focused}) =>
-                    focused ? (<Text style={{fontWeight: 'bold'}}>{route.name}</Text>) :
-                        (<Text style={{fontWeight: 'normal', fontSize: 10}}>{route.name}</Text>),
-            })}>
-                <Tab.Screen name="Home" component={HomeScreen} options={{
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size}/>),
-                }}
+        <Tab.Navigator screenOptions={({route}) => ({
+            tabBarActiveTintColor: '#ed7907',
+            tabBarStyle: bottomNavigationTabsStyles.tabBar,
+            tabBarLabelStyle: bottomNavigationTabsStyles.tabBarLabel,
+            tabBarLabel: ({position, focused}) =>
+                focused ? (<Text style={{fontWeight: 'bold'}}>{route.name}</Text>) :
+                    (<Text style={{fontWeight: 'normal', fontSize: 10}}>{route.name}</Text>),
+        })}>
+            <Tab.Screen name={"HomeSCEEN"} component={HomeScreen} options={{
+                tabBarLabel: 'Home',
+                tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size}/>),
+            }}
 
-                />
-                <Tab.Screen name="ActivityScreen" component={ActivityScreen} options={{
-                    tabBarLabel: 'Activity',
-                    tabBarIcon: ({color, size}) => (
-                        <MaterialCommunityIcons name="script-text" color={color} size={size}/>),
-                    tabBarBadge: 2,
-                }}/>
-                <Tab.Screen name="Payment" component={PaymentScreen} options={{
-                    tabBarLabel: 'Payment',
-                    tabBarIcon: ({color, size}) => (<MaterialIcons name="payment" color={color} size={size}/>),
-                }}/>
-                <Tab.Screen name="ProfileScreen" component={HistoryStackNavigation} options={{
-                    tabBarLabel: 'Profile',
-                    headerShown: false,
-                    tabBarIcon: ({color, size}) => (
-                        <MaterialCommunityIcons name="account-circle-outline" color={color} size={size}/>),
-                }}/>
-            </Tab.Navigator>
-        </NavigationContainer>
+            />
+            <Tab.Screen name={MainRouteName.ActivityScreen} component={ActivityScreen} options={{
+                tabBarLabel: 'Activity',
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="script-text" color={color} size={size}/>),
+                tabBarBadge: 2,
+            }}/>
+            <Tab.Screen name={MainRouteName.PaymentScreen} component={PaymentScreen} options={{
+                tabBarLabel: 'Payment',
+                tabBarIcon: ({color, size}) => (<MaterialIcons name="payment" color={color} size={size}/>),
+            }}/>
+            <Tab.Screen name={MainRouteName.ProfileScreen} component={ProfileScreen} options={{
+                tabBarLabel: 'Profile',
+                headerShown: false,
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="account-circle-outline" color={color} size={size}/>),
+            }}/>
+        </Tab.Navigator>
     );
 };
 export default BottomNavigationTabs;
