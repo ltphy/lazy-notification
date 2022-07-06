@@ -1,4 +1,9 @@
+import {createNavigationContainerRef} from '@react-navigation/native';
+
+const navigationRef = createNavigationContainerRef<MainRouteParamList>();
+
 enum MainRouteName {
+    MainScreen = 'MainScreen',
     HomeScreen = "HomeScreen",
     NotificationScreen = "NotificationScreen",
     ActivityScreen = "ActivityScreen",
@@ -11,6 +16,7 @@ enum MainRouteName {
 }
 
 export type MainRouteParamList = {
+    MainScreen: undefined;
     PaymentScreen: undefined,
     HomeScreen: undefined,
     NotificationScreen: undefined;
@@ -23,4 +29,4 @@ export type MainRouteParamList = {
 }
 
 
-export {MainRouteName};
+export {MainRouteName, navigationRef};

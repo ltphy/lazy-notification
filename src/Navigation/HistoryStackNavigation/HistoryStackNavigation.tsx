@@ -12,8 +12,8 @@ const Stack = createNativeStackNavigator<MainRouteParamList>();
 const HistoryStackNavigation = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name={MainRouteName.HomeScreen} component={BottomNavigationTabs}
-                          key={MainRouteName.HomeScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={MainRouteName.MainScreen} component={BottomNavigationTabs}
+                          key={MainRouteName.MainScreen} options={{headerShown: false}}/>
             <Stack.Screen name={MainRouteName.ProfileScreen} component={ProfileScreen}
                           key={MainRouteName.ProfileScreen}/>
             <Stack.Screen name={MainRouteName.ChallengeScreen} component={ChallengeScreen}

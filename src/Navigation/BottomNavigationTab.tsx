@@ -24,11 +24,11 @@ const BottomNavigationTabs = () => {
                 focused ? (<Text style={{fontWeight: 'bold'}}>{route.name}</Text>) :
                     (<Text style={{fontWeight: 'normal', fontSize: 10}}>{route.name}</Text>),
         })}>
-            <Tab.Screen name={"HomeSCEEN"} component={HomeScreen} options={{
+            <Tab.Screen name={MainRouteName.HomeScreen} component={HomeScreen} options={{
                 tabBarLabel: 'Home',
                 tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size}/>),
-            }}
 
+            }}
             />
             <Tab.Screen name={MainRouteName.ActivityScreen} component={ActivityScreen} options={{
                 tabBarLabel: 'Activity',

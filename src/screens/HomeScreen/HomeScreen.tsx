@@ -2,14 +2,22 @@ import {useNavigation} from "@react-navigation/native";
 import React, {useRef, useState} from "react";
 import {Button, Text, View} from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
-import {MainRouteName, MainRouteParamList} from "../../Navigation/MainRoute.constants";
+import {MainRouteName, MainRouteParamList, navigationRef} from "../../Navigation/MainRoute.constants";
 import NumericInput from "react-native-numeric-input";
 import CustomNumericInput from "../../components/CustomNumericInput";
+import useBackHandler from "../../utils/handleBack";
 
 const HomeScreen = () => {
     const navigation = useNavigation<StackNavigationProp<MainRouteParamList>>();
     const [value, setValue] = useState<number>();
     const firstMax = useRef<boolean>(false);
+    // not allow to goBack but dp something else
+    useBackHandler({
+        handleBack: () => {
+            console.log('goBack');
+            navigation.goBack();
+        }
+    });
 
     const onLimitReach = (isMax: boolean, msg: string) => {
         if (isMax && !firstMax.current) {
@@ -32,7 +40,10 @@ const HomeScreen = () => {
             <Text>Home Screen</Text>
             <Button
                 title="Go to Details"
-                onPress={() => navigation.navigate(MainRouteName.ProfileScreen)}
+                onPress={() => navigation.navigate({
+                    name: MainRouteName.ProfileScreen,
+                    key: MainRouteName.ProfileScreen
+                })}
             />
             <NumericInput
                 value={value}
